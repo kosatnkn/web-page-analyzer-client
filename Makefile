@@ -1,3 +1,6 @@
+# ref: https://bytes.usc.edu/cs104/wiki/makefile
+.PHONY: run test build docker_build
+
 # Runs the app in the development mode.
 # Open http://localhost:3000 to view it in your browser.
 # The page will reload when you make changes.
