@@ -77,6 +77,9 @@ const Search = ({apiBaseUrl}) => {
         <Form.Control
           placeholder="http://example.com"
           onChange={(e) => setURL(e.target.value)}
+          onKeyUp={(e) => {
+            if (e.key === "Enter") {getReport(url, defaultComponents)}
+          }}
         />
         <Button variant="primary" onClick={() => getReport(url, defaultComponents)}>
           Analyze
