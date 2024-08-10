@@ -4,9 +4,12 @@ import { InputGroup } from 'react-bootstrap';
 const Report = ({name, summary}) => {
   // --- functions -----------------------------------------------------------------------------------------------------
   const truncateStr = (str) => {
-    let l = 100;
+    if(str === undefined) {
+      return ""
+    }
 
-    if(str.length < 100) {
+    let l = 100;
+    if(str.length < l) {
       return str;
     }
 

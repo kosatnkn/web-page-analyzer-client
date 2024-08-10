@@ -8,7 +8,7 @@ import Report from "./Report";
 const Search = ({apiBaseUrl}) => {
   // --- defaults ------------------------------------------------------------------------------------------------------
   const genericErrMsg = "Error occurred while analyzing URL";
-  const defaultComponents = ["h1", "h2", "h3", "h4", "h5", "h6", "a", "login"];
+  const defaultComponents = ["h1", "h2", "h3", "h4", "h5", "h6", "a", "form"];
 
   // --- hooks ---------------------------------------------------------------------------------------------------------
   const [url, setURL] = useState("");
