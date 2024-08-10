@@ -41,6 +41,25 @@ const Report = ({name, summary}) => {
                   }
                 </InputGroup>
               )
+            case 'form':
+              return (
+                <InputGroup className="mb-3">
+                  {s.login
+                    ? (
+                      <>
+                        <InputGroup.Text><i className="bi bi-lock-fill text-warning"/></InputGroup.Text>
+                        <InputGroup.Text>Login Form</InputGroup.Text>
+                      </>
+                    )
+                    : (
+                      <>
+                        <InputGroup.Text><i className="bi bi-square-fill text-secondary"/></InputGroup.Text>
+                        <InputGroup.Text>General Form</InputGroup.Text>
+                      </>
+                    )
+                  }
+                </InputGroup>
+              )
             default:
               return null
           }
