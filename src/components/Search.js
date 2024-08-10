@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, InputGroup, Button, Row } from 'react-bootstrap';
+import { Form, InputGroup, Button, Row, Alert } from 'react-bootstrap';
 import { PulseLoader } from 'react-spinners';
 import validator from 'validator'
 import newReportAPI from '../request/report';
@@ -12,7 +12,7 @@ const Search = ({apiBaseUrl}) => {
 
   // --- hooks ---------------------------------------------------------------------------------------------------------
   const [url, setURL] = useState("");
-  const [report, setReport] = useState({});
+  const [report, setReport] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -21,7 +21,8 @@ const Search = ({apiBaseUrl}) => {
 
   // --- functions -----------------------------------------------------------------------------------------------------
   const getReport = async (url, cmp) => {
-    setReport({})
+    setReport(null)
+    setError("");
 
     if(!isValidURL(url)) {
       setError("Provided value is not a valid URL");
@@ -47,7 +48,7 @@ const Search = ({apiBaseUrl}) => {
 
   const isValidURL = (url) => {
     let options = {
-      protocols: ['http','https','ftp'],
+      protocols: ['http','https'],
       require_tld: true,
       require_protocol: true,
       require_host: true,
@@ -92,8 +93,8 @@ const Search = ({apiBaseUrl}) => {
         speedMultiplier={1}
       />
     </Row>
-    {error && <strong className="text-danger">{error}</strong>}
-    <Report content={report} />
+    {error && <Alert variant="danger">{error}</Alert>}
+    {report && <Report content={report} />}
   </>
   );
 }
