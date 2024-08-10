@@ -15,7 +15,7 @@ const Report = ({content}) => {
         {content.components && content.components.map(c => (
           <>
           <Accordion.Item key={c.name} eventKey={c.name}>
-            <Accordion.Header><Badge pill bg="info" text="dark">{c.count}</Badge>&nbsp;<strong>{c.name}</strong></Accordion.Header>
+            <Accordion.Header><Badge bg="info" text="dark">{c.count}</Badge>&nbsp;<strong>{c.name}</strong></Accordion.Header>
             {c.summary
               ? (
                 <Accordion.Body>
