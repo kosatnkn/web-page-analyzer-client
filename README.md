@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+# Web Page Analyzer Client
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
+This is the frontend component of the `Web Page Analyzer` written in [React](https://react.dev/).
 
-## Available Scripts
+It is tasked with reading tags of a given web page and generate a summary. The client calls a REST endpoint that accepts a URL and an array of HTML tag names.
 
-In the project directory, you can run:
+The `OpenAPI` document of the RESTful interface can be found at [docs/api/openapi.yaml](https://github.com/kosatnkn/web-page-analyzer-api/blob/main/docs/api/openapi.yaml) of the [kosatnkn/web-page-analyzer-api](https://github.com/kosatnkn/web-page-analyzer-api) repository.
 
-### `npm start`
+> **IMPORTANT**
+>
+> There are two more pieces to the solution.
+> - Web Page Analyzer API, the backend component ([https://github.com/kosatnkn/web-page-analyzer-api](https://github.com/kosatnkn/web-page-analyzer-api))
+> - Deployer, the IoC (infrastructure as code) component that enables single command deployment ([https://github.com/kosatnkn/web-page-analyzer-deploy](https://github.com/kosatnkn/web-page-analyzer-deploy))
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Running
+There are two ways to run the service (**from source** or **from a Docker container**).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Configuring
+The only configuration value used is the **API_BASE_URL** which is in `web-page-analyzer-client/src/App.js` which tells the client the location of the **Web Page Analyzer API** service.
 
-### `npm test`
+### Running From Source
+Once you clone the repository and setup configurations use the following make command to run the client.
+```bash
+make run
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Run as a Docker Container
+You can also run the client as a Docker container.
 
-### `npm run build`
+Use the following commands to build and spin-up the container.
+```bash
+make docker_run
+```
+> **NOTE:** This will build and tag the Docker image with `kosatnkn/web-page-analyzer-client:latest`(by default) and then run it. This behavior can be changed from the Makefile.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+> **IMPORTANT:** The **Web Page Analyzer API** should be running and accessible.

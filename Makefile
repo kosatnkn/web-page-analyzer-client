@@ -8,6 +8,9 @@
 run:
 	npm start
 
+docker_run: docker_build
+	docker run --name web-page-analyzer-client --rm -p 3000:80 kosatnkn/web-page-analyzer-client:latest
+
 # Launches the test runner in the interactive watch mode.
 # See the section about running tests (https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 test:
